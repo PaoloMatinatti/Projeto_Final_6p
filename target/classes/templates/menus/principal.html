@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <title>Menu Principal</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Menu Principal</h1>
+    <br><br><br>
+    <a href="/individuos/formulario">Cadastrar Pessoa</a>
+    <br><br><br>
+    <a href="/individuos/listagem">Listar Pessoas</a>
+    <br><br><br>
+    <a href="/produtos/formulario">Cadastrar Produtos</a>
+    <br><br><br>
+    <a href="/produtos/listagem">Listar Produtos</a>
+    <br><br><br>
+    <a href="/fichas/listagem">Listar Fichas</a>
+    <br><br><br>
+    <a href="/fichas/formulario">Cadastrar Fichas</a>
+    <br><br><br>
+    <a href="/fichas/porIndividuo">Pesquisar fichas de um Paciente</a>
+    <br><br><br>
+    <a href="/fichas/porProduto">Pesquisar fichas com determinado Produto</a>
+    <br><br><br>
+    <a href="/fichas/porMaisProduto">Pesquisar Produtos mais usado</a>
+    <br><br><br>
+    <a href="/fichas/porMaisIndividuo">Pesquisar Individuo com mais Fichas</a>
+    <br><br><br>
+    <a href="/fichas/maiorProduto">Pesquisar Produto mais Usadado(NativeQuerry)</a>
+    <br><br><br>
+</div>
+</body>
+</html>
+

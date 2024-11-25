@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Ficha por Produto</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+  <h1>Ficha por Produto</h1>
+
+  <form th:action="@{'/fichas/porProduto'}" method="get">
+    <div>
+      <label for="produto">Selecione o produto:</label>
+
+      <select id="produto" name="idProduto">
+        <option value="" disabled selected>Selecione um Produto</option>
+        <th:block th:each="pro : ${listaProduto}">
+          <option th:value="${pro.idProduto}" th:text="${pro.nome}"></option>
+        </th:block>
+      </select>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+      <input type="submit" value="Buscar Fichas">
+    </div>
+  </form>
+
+  <h2 th:if="${fichas != null}">Fichas que contem o Produto: <span th:text="${nome}"></span></h2>
+  <table th:if="${fichas != null}">
+    <thead>
+    <tr>
+      <th>Id das Fichas com Produto</th>
+      <th>Nome do Produto</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fichas : ${fichas}">
+      <td th:text="${fichas.idFicha}"></td>
+      <td th:text="${fichas.produto.nome}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div th:if="${fichas == null}" style="display: flex; justify-content: center; margin-top: 20px;">
+    <p>Nenhum ficha encontrada com este produto.</p>
+  </div>
+
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <a href="/menus/principal">Menu Principal</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<body><!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Ficha</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+  <h1>Cadastro de Ficha</h1>
+
+  <form th:action="@{'/fichas/formulario'}" method="post">
+    <input type="hidden" name="_method" value="put" th:if="${fichas!=null}">
+    <input type="hidden" name="idFicha" th:value="${fichas?.idFicha}">
+
+
+    <div>
+      <label for="individuo">Individuo:</label>
+      <select id="individuo" name="individuo" required>
+        <option value="">Selecione um Individuo</option>
+        <th:block th:each="ind : ${listaIndividuo}">
+          <option th:value="${ind.idIndividuo}"
+                  th:text="${ind.nome}"></option>
+        </th:block>
+      </select>
+    </div>
+
+    <div>
+      <label for="aparelhoDigestorio">Problemas do Aparelho Digestório:</label>
+      <select id="aparelhoDigestorio" name="aparelhoDigestorio">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adColicasDorBarriga">Cólicas/Dor de barriga:</label>
+      <select id="adColicasDorBarriga" name="adColicasDorBarriga">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adDorEstomago">Dor de estômago:</label>
+      <select id="adDorEStomago" name="adDorEstomago">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adAziaQueimacao">Azia/Queimação:</label>
+      <select id="adAziaQueimacao" name="adAziaQueimacao">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adNauseasEnjoo">Náuseas/Enjoo:</label>
+      <select id="adNauseasEnjoo" name="adNauseasEnjoo">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adVomito">Vômito:</label>
+      <select id="adVomito" name="adVomito">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="adDiarreia">Diarreia:</label>
+      <select id="adDiarreia" name="adDiarreia">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="aparelhoRespiratorio">Problemas do Aparelho Respiratório:</label>
+      <select id="aparelhoRespiratorio" name="aparelhoRespiratorio">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="arFaltaAr">Falta de ar:</label>
+      <select id="arFaltaAr" name="arFaltaAr">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="arIrritacaoNasal">Irritação Nasal (coceira/ardência):</label>
+      <select id="arIrritacaoNasal" name="arIrritacaoNasal">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="arCatarro">Catarro ou escarro:</label>
+      <select id="arCatarro" name="arCatarro">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="arTosse">Tosse:</label>
+      <select id="arTosse" name="arTosse">
+        <option value="" selected disabled>Selecione</option>
+        <option value="1">Sim</option>
+        <option value="0">Não</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="produto">Produto químico teve contato pela
+        última vez:</label>
+      <select id="produto" name="produto" required>
+        <option value="">Selecione um Produto</option>
+        <th:block th:each="pro : ${listaProduto}">
+          <option th:value="${pro.idProduto}"
+                  th:text="${pro.nome}"></option>
+        </th:block>
+      </select>
+    </div>
+
+    <div style="justify-content: center;">
+      <input type="submit" th:value="${fichas  == null} ? 'Cadastrar' : 'Atualizar'">
+      <a href="/menus/principal">Menu Principal</a>
+    </div>
+
+  </form>
+</div>
+
+</body>
+</html>

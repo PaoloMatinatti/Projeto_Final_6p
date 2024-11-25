@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Fichas</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Listagem de Fichas</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Individuo</th>
+            <th>Produto</th>
+            <th>Do Aparelho Digestorio</th>
+            <th>1 Colicas/Dor de Barriga</th>
+            <th>2 Dor de Estomago</th>
+            <th>3 Azia/Queimacao</th>
+            <th>4 Nauseas/Enjoo</th>
+            <th>5 Vomito</th>
+            <th>6 Diarreia</th>
+            <th>Do Aparelho Respiratorio</th>
+            <th>1 Falta de ar</th>
+            <th>2 Irritação Nasal</th>
+            <th>3 Catarro ou escarro</th>
+            <th>4 Tosse</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="fichas: ${lista}">
+            <td th:text="${fichas.individuo.nome}"></td>
+            <td th:text="${fichas.produto.nome}"></td>
+            <td th:text="${fichas.aparelhoDigestorio != null ? (fichas.aparelhoDigestorio ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adColicasDorBarriga != null ? (fichas.adColicasDorBarriga ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adDorEstomago != null ? (fichas.adDorEstomago ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adAziaQueimacao != null ? (fichas.adAziaQueimacao ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adNauseasEnjoo != null ? (fichas.adNauseasEnjoo ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adVomito != null ? (fichas.adVomito ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.adDiarreia != null ? (fichas.adDiarreia ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.aparelhoRespiratorio != null ? (fichas.aparelhoRespiratorio ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.arFaltaAr != null ? (fichas.arFaltaAr ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.arIrritacaoNasal != null ? (fichas.arIrritacaoNasal ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.arCatarro != null ? (fichas.arCatarro ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+            <td th:text="${fichas.arTosse != null ? (fichas.arTosse ? 'Sim' : 'Não') : 'Não Informado'}"></td>
+
+            <td>
+                <a th:href="@{/fichas/formulario?idFicha={idFicha}(idFicha=${fichas.idFicha})}">Editar</a>
+                <form action="/fichas" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${fichas.idFicha}">
+                    <input type="submit" value="Excluir">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;">
+        <a href="/fichas/formulario">Novo</a>
+        <a href="/menus/principal">Menu Principal</a>
+    </div>
+</div>
+</body>
+</html>

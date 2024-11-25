@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Pessoas</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+    <h1>Listagem de Pessoas</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>CPF</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="individuos: ${lista}">
+            <td th:text="${individuos.nome}"></td>
+            <td th:text="${individuos.telefone}"></td>
+            <td th:text="${individuos.CPF}"></td>
+            <td>
+                <a th:href="@{/individuos/formulario?idIndividuo={idIndividuo}(idIndividuo=${individuos.idIndividuo})}">Editar</a>
+                <form action="/individuos" method="post">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${individuos.idIndividuo}">
+                    <input type="submit" value="Excluir">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="display: flex; justify-content: center;">
+        <a href="/individuos/formulario">Novo</a>
+        <a href="/menus/principal">Menu Principal</a>
+    </div>
+</div>
+</body>
+</html>

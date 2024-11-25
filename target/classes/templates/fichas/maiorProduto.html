@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{template.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Produto Mais Usado</title>
+</head>
+<body>
+<div layout:fragment="conteudo">
+  <h1>Produto mais usado</h1>
+
+
+  <form th:action="@{'/fichas/mairoProduto'}" method="get">
+  </form>
+
+  <h2 th:if="${fichas != null}">Produto: <span th:text="${nome}"></span></h2>
+  <table th:if="${fichas != null}">
+    <thead>
+    <tr>
+      <th>Nome da Pessoa</th>
+      <th>Id da Ficha</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="fichas : ${fichas}">
+      <td th:text="${fichas.individuo.nome}"></td>
+      <td th:text="${fichas.idFicha}"></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+    <a href="/menus/principal">Menu Principal</a>
+  </div>
+</div>
+</body>
+</html>
